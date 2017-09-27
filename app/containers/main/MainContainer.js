@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export default class MainContainer extends React.Component {
+export default class MainContainer extends Component {
   render () {
     return (<p>{'Hello World!'}</p>)
   }

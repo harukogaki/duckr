@@ -1,3 +1,4 @@
+var path = require ('path')
 var HTMLWebPackPlugin = require('html-webpack-plugin');
 
 var HTMLWebPackPluginConfig = new HTMLWebPackPlugin({
@@ -6,12 +7,18 @@ var HTMLWebPackPluginConfig = new HTMLWebPackPlugin({
   inject: 'body'
 });
 
+var PATHS = {
+  app: path.join(__dirname, 'app'),
+  build: path.join(__dirname, 'dist'),
+}
+
 module.exports = {
+  devtool: 'cheap-module-inline-source-map',
   entry: [
-    './app/index.js'
+    PATHS.app,
   ],
   output: {
-    path: __dirname + '/dist',
+    path: PATHS.build,
     filename: 'index_bundle.js',
   },
 
