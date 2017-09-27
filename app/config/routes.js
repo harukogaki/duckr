@@ -1,12 +1,12 @@
 import React from 'react'
-import {Router, Route} from 'react-router'
+import {Route} from 'react-router'
 import {MainContainer} from '../containers'
-import {HashRouter} from 'react-router-dom'
+import {BrowserRouter} from 'react-router-dom'
 
 const routes = (
-  <HashRouter>
+  <BrowserRouter>
     <Route path='/' component= {MainContainer} />
-  </HashRouter>
+  </BrowserRouter>
 )
 
-export default routes;
+export default routes
