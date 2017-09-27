@@ -1,25 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-class Main extends React.Component {
-  render() {
-    return (
-      <p>
-        Hello World
-      </p>
-    )
-  }
-}
-
-// const Main = React.createClass({
-//   render(){
-//     return(
-//       <p>
-//         Hello World!
-//       </p>
-//     )
-//   }
-// })
+import { MainContainer} from './containers'
 
 ReactDOM.render(
-  <Main/>, document.getElementById('app'))
+  <MainContainer/>, document.getElementById('app'))
