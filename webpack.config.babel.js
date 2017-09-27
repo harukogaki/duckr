@@ -30,11 +30,14 @@ const base = {
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader',
+        loader: 'style!css?sourceMap&modules&localIdentName=[name]__[local]___[hash:base64:5]',
       }
 
     ]
   },
+  resolve: {
+    modules: [path.resolve("./app"), "node_modules"]
+  }
 }
 
 const productionPlugin = new webpack.DefinePlugin({
@@ -45,7 +48,13 @@ const productionPlugin = new webpack.DefinePlugin({
 
 const developmentConfig = {
   devtool: 'cheap-module-inline-source-map',
-  plugins: [HTMLWebPackPluginConfig]
+  devServer: {
+    contentBase: PATHS.build,
+    hot: true,
+    inline: true,
+    progress: true,
+  },
+  plugins: [HTMLWebPackPluginConfig, new webpack.HotModuleReplacementPlugin()]
 }
 const productionConfig = {
   devtool: 'cheap-module-source-map',
@@ -54,6 +63,7 @@ const productionConfig = {
 
 const LAUNCH_COMMAND = process.env.npm_lifecycle_event
 const isProduction = (LAUNCH_COMMAND === 'production')
+process.env.BABEL_ENV = LAUNCH_COMMAND
 
 export default Object.assign({}, base,
   isProduction === true ?

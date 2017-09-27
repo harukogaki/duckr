@@ -1,1 +1,1 @@
-export MainContainer from './main/MainContainer'
+export MainContainer from 'containers/main/MainContainer'
