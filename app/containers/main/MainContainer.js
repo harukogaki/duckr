@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { container, innerContainer } from './styles.css'
-import { HomeContainer } from 'containers'
+import { AuthenticateContainer, HomeContainer } from 'containers'
 import { Navigation } from 'components'
-import { Route } from 'react-router'
+import { Route , Switch} from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
 
 export default class MainContainer extends Component {
@@ -12,7 +12,10 @@ export default class MainContainer extends Component {
         <div className={container}>
           <Navigation isAuthed={false}/>
           <div className={innerContainer}>
-            <Route path='/' component={HomeContainer} />
+            <Switch>
+              <Route exact path='/' component={HomeContainer} />
+              <Route path='/auth' component={AuthenticateContainer} />
+            </Switch>
           </div>
         </div>
       </BrowserRouter>
