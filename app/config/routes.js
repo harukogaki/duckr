@@ -1,16 +1,11 @@
 import React from 'react'
-import {Route, IndexRoute} from 'react-router'
-import {MainContainer, HomeContainer} from 'containers'
-import {BrowserRouter, Switch} from 'react-router-dom'
+import { Route } from 'react-router'
+import { MainContainer } from 'containers'
+import { BrowserRouter } from 'react-router-dom'
 
 const routes = (
-  // <BrowserRouter>
-  //   <Route path='/' component= {MainContainer} />
-  // </BrowserRouter>
-  <BrowserRouter path='/' component= {MainContainer}>
-      <Switch>
-        <Route exact component={HomeContainer}/>
-      </Switch>
+  <BrowserRouter >
+    <Route path='/' component= {MainContainer}/>
   </BrowserRouter>
 )
 
