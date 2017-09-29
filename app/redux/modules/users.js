@@ -5,7 +5,7 @@ const FETCHING_USER_FAILURE = 'FETCHING_USER_FAILURE'
 const FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS'
 
 // Users
-function authUser(uid) {
+export function authUser(uid) {
   return {type: AUTH_USER, uid}
 }
 
@@ -13,15 +13,15 @@ function unauthUser() {
   return {type: UNAUTH_USER}
 }
 
-function fetchingUser() {
+export function fetchingUser() {
   return {type: FETCHING_USER}
 }
 
-function fetchingUserFailure() {
+export function fetchingUserFailure() {
   return {type: FETCHING_USER_FAILURE, error: 'Error fetching user.'}
 }
 
-function fetchingUserSuccess(uid, user, timestamp) {
+export function fetchingUserSuccess(uid, user, timestamp) {
   return {type: FETCHING_USER_SUCCESS, uid, user, timestamp}
 }
 
@@ -91,7 +91,7 @@ export default function users(state = initialState, action) {
           ...state,
           error : '',
           isFetching : false,
-          [action.uic]: user(state[action.uid], action)
+          [action.uid]: user(state[action.uid], action)
         }
 
       case FETCHING_USER_FAILURE : return {
