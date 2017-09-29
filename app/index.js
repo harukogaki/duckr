@@ -9,5 +9,5 @@ const store = createStore(users, applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>
-  <MainContainer/>
-</Provider>, document.getElementById('app'))
+    <MainContainer/>
+  </Provider>, document.getElementById('app'))

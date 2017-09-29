@@ -5,14 +5,12 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as userActionCreaters from 'redux/modules/users'
 
-class AuthenticateContainer extends React.Component
-{
+class AuthenticateContainer extends React.Component {
   handleAuth = () => {
-    this.props.fetchAndHandleAuthedUser();
+    this.props.fetchAndHandleAuthedUser()
   }
 
-  render() {
-    console.log('isFetching: ' + this.props.isFetching)
+  render () {
     return (
       <div>
         <Authenticate isFetching={this.props.isFetching} error={this.props.error} onAuth={this.handleAuth}/>
@@ -27,13 +25,12 @@ AuthenticateContainer.propTypes = {
   fetchAndHandleAuthedUser: PropTypes.func.isRequired,
 }
 
-function mapStateToProps(state) {
-  console.log(state);
+function mapStateToProps (state) {
   return {isFetching: state.isFetching, error: state.error}
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(userActionCreaters, dispatch);
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators(userActionCreaters, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthenticateContainer)
