@@ -1,11 +1,14 @@
 import React from 'react'
 import { Authenticate } from 'components'
 import auth from 'helpers/auth'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-export default class AuthenticateContainer extends React.Component{
+class AuthenticateContainer extends React.Component
+{
   handleAuth(){
     auth().then((user)=>{
-      console.log('Authed user: ' + user)
+      console.log(user)
     })
   }
 
@@ -13,10 +16,25 @@ export default class AuthenticateContainer extends React.Component{
     return (
       <div>
         <Authenticate
-          isFetching={false}
-          error=''
+          isFetching={this.props.isFetching}
+          error={this.this.props.error}
           onAuth={this.handleAuth}/>
       </div>
     )
   }
 }
+
+function mapStateToProps(state){
+  console.log(state)
+  return {
+    isFetching: state.isFetching,
+    error: state.error,
+  }
+}
+
+AuthenticateContainer.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
+}
+
+export default connect(mapStateToProps)(AuthenticateContainer)
